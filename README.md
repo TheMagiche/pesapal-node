@@ -1,8 +1,6 @@
 ## Pesapal-Node
 
-[![NPM](https://nodei.co/npm/pesapaljs.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.org/package/pesapaljs)
-
-## STATUS
+### STATUS
 
 Still in development!!
 
