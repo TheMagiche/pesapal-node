@@ -1,0 +1,21 @@
+{
+  "name": "pesapal-node",
+  "version": "0.0.1",
+  "description": "a node package for pesapal API",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMagiche/pesapal-node.git"
+  },
+  "keywords": [
+    "pesapal"
+  ],
+  "author": "themagiche",
+  "license": "MIT",
+  "dependencies": {
+    "locutus": "^2.0.11",
+    "oauthsimple": "0.0.1",
+    "request": "^2.88.2",
+    "xmlbuilder": "^15.1.1"
+  }
+}
