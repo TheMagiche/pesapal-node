@@ -1,8 +1,9 @@
 {
   "name": "pesapal-node",
   "version": "0.0.1",
-  "description": "a node package for pesapal API",
-  "main": "index.js",
+  "description": "A node package for pesapal.com API endpoints",
+  "homepage": "https://github.com/TheMagiche/pesapal-node.git",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheMagiche/pesapal-node.git"
