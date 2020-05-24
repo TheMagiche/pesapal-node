@@ -36,7 +36,7 @@ const PesaPal = require('pesapal-node');
 let pesapal = new PesaPal({
     sitename: '<Your Site>',
     consumer_key: '<Consumer Key provided by pesapal.com>',
-    secret: '<Consumer Secret provided by pesapal.com>',
+    consumer_secret: '<Consumer Secret provided by pesapal.com>',
     debug: true // false in production!
 });
 
