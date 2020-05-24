@@ -11,7 +11,7 @@ Make it easy to integrate [PesaPal](https://www.pesapal.com) into a website or m
 ### Core Features
 - `customerDetail(firstname, lastname, email, phonenumber)`: `Model` Create a customers details
 
-- `orderDetail()` : `Model` Create a order detail
+- ` orderDetail(itemID, particulars, quantity, unitCost, details)` : `Model` Create a order detail
 
 - `sendPostPesaPalDirectOrder(reference,customerDetails, description, orders = [])`: Send an order to PostPesaDirectOrderV4 API Endpoint and receive a redirect url for cients to make their payment. PesaPal will redirect to a url with the following format once the payment is completed:
 http://www.mysite.com/processingorder? pesapal_transaction_tracking_id=195035be-56bb-48ba-8439-7e12196cb87e&pesapal_merchant_reference=12345
@@ -39,6 +39,66 @@ let pesapal = new PesaPal({
     secret: '<Consumer Secret provided by pesapal.com>',
     debug: true // false in production!
 });
+
+// Create Customer Details
+
+let customer = pesapal.customerDetail({
+    fistname: '',
+    lastname: '',
+    email: '',
+    phonenumber: '',
+});
+
+// Create Order Detail <as many as required>
+let order = pesapal.orderDetail({
+    itemID: '<unique string value for item>',
+    particulars: 'Details of the item',
+    quatity: '<Numeric value of order',
+    unitCost: '<Numeric value of price of item>',
+    details: '<information about the order>'
+});
+
+// Place orders in an array
+let orders = [];
+orders.push(order);
+
+// make a call to the PESAPALDIRECTORDER
+let postOrderUrl = pesapal.sendPostPesaPalDirectOrder({
+    reference: '<unique string value to indicate order>',
+    customerDetails: customer,
+    description:'Description of order',
+    orders: orders
+}); // Returns a url to redirect to pesapal payment page
+
+/* 
+
+Get status of payment using information from req.params
+using either 
+~getQueryPaymentStatus(merchant_ref, merchant_tracking_id)
+~getQueryPaymentStatusByMerchantRef(merchant_ref)
+~getQueryPaymentDetails(merchant_ref, merchant_tracking_id)
+
+*/
+let queryUrl = pesapal.getQueryPaymentDetails({
+    merchant_ref:'',
+    merchant_tracking_id:''
+});
+
+/* 
+
+Use a request lib such as got superagent got e.t.c to parse the
+results
+
+*/
+let request = require('superagent');
+request()
+  .get(queryUrl)
+  .end(function(err, response){
+    if (err) // handle error
+    console.log(request.body); // parse response as documented at http://developer.pesapal.com/how-to-integrate/api-reference
+  });
+
+
 
 ```
 When the `debug` option is set, `pesapal-node` will use the `demo.pesapal.com/*` endpoints.

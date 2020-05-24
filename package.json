@@ -16,7 +16,6 @@
   "dependencies": {
     "locutus": "^2.0.11",
     "oauthsimple": "0.0.1",
-    "request": "^2.88.2",
     "xmlbuilder": "^15.1.1"
   }
 }
