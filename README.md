@@ -1,8 +1,8 @@
-## Pesapal-Node
+# Pesapal-node
 
 ### STATUS
 
-Still in development!!
+Version 1.0.0
 
 ### Goal
 
@@ -86,18 +86,21 @@ let queryUrl = pesapal.getQueryPaymentDetails({
 
 /* 
 
-Use a request lib such as got superagent got e.t.c to parse the
+Use a request lib such as got to parse the
 results
 
 */
-let request = require('superagent');
-request()
-  .get(queryUrl)
-  .end(function(err, response){
-    if (err) // handle error
-    console.log(request.body); // parse response as documented at http://developer.pesapal.com/how-to-integrate/api-reference
-  });
-
+const got = require('got');
+(async () => {
+    try {
+        const response = await got(pesapalQueryUrl);
+        console.log(response.body);
+        //=> '<!doctype html> ...'
+    } catch (error) {
+        console.log(error.response.body);
+        //=> 'Internal server error ...'
+    }
+})();
 
 
 ```
@@ -113,5 +116,6 @@ When the `debug` option is set, `pesapal-node` will use the `demo.pesapal.com/*`
 
 
 ### Bugs & Issues
-Will be added soon after version 1.0.0 is released
+To report bugs (or any other issues), use the [issues page](https://github.com/TheMagiche/pesapal-node/issues).
+
 

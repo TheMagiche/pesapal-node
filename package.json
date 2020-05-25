@@ -1,6 +1,6 @@
 {
   "name": "pesapal-node",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A node package for pesapal.com API endpoints",
   "homepage": "https://github.com/TheMagiche/pesapal-node.git",
   "main": "lib/index.js",
